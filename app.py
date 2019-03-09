@@ -28,9 +28,18 @@ To set up the development environment:
 from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
 from pyramid.response import Response
+from pyramid.events import NewRequest
 import json
 import random
 import string
+
+def add_cors_headers_response_callback(event):
+    def cors_headers(request, response):
+        response.headers.update({
+            'Access-Control-Allow-Origin': '*',
+
+        })
+    event.request.add_response_callback(cors_headers)
 
 def get_confirmation_number():
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=5))
@@ -90,6 +99,7 @@ if __name__ == '__main__':
         config.add_view(
             book, route_name='book', renderer='json'
         )
+        config.add_subscriber(add_cors_headers_response_callback, NewRequest)
 
         app = config.make_wsgi_app()
     print('Servers on http://0.0.0.0:5000')

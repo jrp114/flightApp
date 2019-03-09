@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 75%;
+  width: 75%;
+  margin: auto;
+  padding-top: 15px;
+}
+
+.container h1 {
+  font-size: 4vmax;
+  padding-bottom: 8px;
+}
+
+.container th, td {
+    font-size: 1.4vmax;
+}
+
+.container Button {
+  background: lightgreen;
+  font-size: 1.4vmax;
+}
+
+#submit-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+
+#book-flight input {
+  width: 100%;
+}
+
+#book-flight label {
+  padding-top: 15px;
+}
+
+#validation-error {
+  font-weight: bold;
+  color: red;
+}
+
+
+@media only screen and (max-width: 550px){
+  #flight-schedule h1 {
+    font-size: 5vmin;
+  }
+
+  #flight-table th, td {
+      font-size: 2.3vmin;
+  }
+}
